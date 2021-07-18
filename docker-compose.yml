@@ -1,0 +1,24 @@
+version: '3.8'
+services: 
+  web: 
+    container_name: "prod-api"
+    build:
+      context: ./
+      target: production
+    command: npm run start:prod
+    ports:
+      - "3333:3333"
+    environment:
+      NODE_ENV: production
+
+  mysql:
+    container_name: "prod-mysql"
+    image: "mysql:5.7.24"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "prod"
+      MYSQL_PASSWORD: "root"
+      MYSQL_DATABASE: "prod:arch"
+      

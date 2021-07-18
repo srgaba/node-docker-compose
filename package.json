@@ -1,0 +1,24 @@
+{
+  "name": "node-docker-compose",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build:prod": "tsc --build && docker-compose -f docker-compose.yml build",
+    "up:prod": "docker-compose -f docker-compose.yml up",
+    "start:prod": "node dist/app",
+    "build:dev": "docker-compose -f docker-compose.dev.yml build",
+    "up:dev": "docker-compose -f docker-compose.dev.yml up",
+    "start:dev": "nodemon ./src/app.ts"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}

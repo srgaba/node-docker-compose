@@ -1,0 +1,25 @@
+version: '3.8'
+services: 
+    api:
+        container_name: "dev-api" 
+        build:
+            context: ./
+            target: dev
+        volumes: 
+            - .:/src
+        command: npm run start:dev
+        ports:
+            - "3333:3333"
+        environment: 
+            NODE_ENV: development
+
+    mysql:
+        container_name: "dev-mysql"
+        image: "mysql:5.7.24"
+        ports:
+          - "3307:3307"
+        environment:
+          MYSQL_ROOT_PASSWORD: "root"
+          MYSQL_USER: "dev"
+          MYSQL_PASSWORD: "root"
+          MYSQL_DATABASE: "dev:arch"
